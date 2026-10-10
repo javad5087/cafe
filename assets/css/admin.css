@@ -1,0 +1,233 @@
+:root{--ink:#3b1d12;--muted:#7b6050;--bg:#f5f0e8;--card:#fff;--line:#e5dccf;--accent:#8a4b2a;--ok:#2e7d4f;--err:#b3261e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:15px;line-height:1.7}
+a{color:var(--accent)}
+.ltr{direction:ltr;unicode-bidi:embed}
+
+/* ---------- نوار بالای مدیریت (سبک وردپرس) ---------- */
+:root{--bar-h:40px;--side-w:212px;--side-folded:54px;--side-bg:#2b1710;--side-sub:#1d0e08;--side-text:#e9ddd0}
+.adminbar{position:fixed;top:0;right:0;left:0;height:var(--bar-h);background:#1a0d08;color:var(--side-text);display:flex;align-items:center;font-size:13px;z-index:40}
+.ab-item{display:flex;align-items:center;gap:7px;padding:0 13px;height:100%;color:var(--side-text);text-decoration:none;background:none;border:0;font:inherit;cursor:pointer}
+.ab-item:hover{background:#3a2218;color:#fff}
+.ab-grow{flex:1}
+.ab-user{cursor:default}
+.ab-user:hover{background:none;color:var(--side-text)}
+.ab-toggle{display:none}
+
+/* ---------- منوی کناری (سبک وردپرس) ---------- */
+.layout{display:flex;min-height:100vh;padding-top:var(--bar-h)}
+.side{width:var(--side-w);flex:none;background:var(--side-bg);color:var(--side-text);position:sticky;top:var(--bar-h);height:calc(100vh - var(--bar-h));align-self:flex-start;z-index:30;padding-top:8px;display:flex;flex-direction:column}
+.wpmenu{list-style:none;margin:0;padding:0}
+.menu-top{position:relative}
+.menu-top > a.top{display:flex;align-items:center;gap:10px;padding:10px 14px;color:var(--side-text);text-decoration:none;font-size:14px;line-height:1.4}
+.menu-top > a.top .ico{opacity:.85}
+.menu-top:hover > a.top{background:#3a2218;color:#fff}
+.menu-top.current > a.top{background:var(--accent);color:#fff;font-weight:700}
+.menu-top.current > a.top .ico{opacity:1}
+.menu-top.current.has-sub > a.top::after{content:'';position:absolute;left:0;top:50%;margin-top:-7px;border:7px solid transparent;border-left-color:var(--bg)}
+
+.sub{list-style:none;margin:0;padding:6px 0;background:var(--side-sub)}
+.sub-title{display:none}
+.sub a{display:block;padding:5px 14px;padding-right:44px;font-size:13px;color:#cdb9a6;text-decoration:none;line-height:1.7}
+.sub a:hover{color:#fff}
+.sub a.on{color:#fff;font-weight:700}
+
+/* زیرمنوی گروه‌های غیرفعال: با هاور به‌صورت flyout در سمت چپِ منو باز می‌شود */
+.menu-top.has-sub:not(.current) > .sub{display:none}
+.menu-top.has-sub:not(.current):hover > .sub,
+.menu-top.has-sub.current:hover > .sub.fly{display:block}
+.menu-top.has-sub:not(.current):hover > .sub{position:absolute;right:100%;top:0;min-width:190px;border-radius:6px 0 0 6px;box-shadow:-6px 6px 18px rgba(0,0,0,.35);padding:0 0 6px}
+.menu-top.has-sub:not(.current):hover > .sub .sub-title{display:block;padding:9px 14px;color:#fff;font-weight:700;font-size:14px;background:var(--side-bg)}
+.menu-top.has-sub:not(.current):hover > .sub a{padding-right:14px}
+
+.fold-btn{margin-top:auto;display:flex;align-items:center;gap:10px;padding:12px 14px;background:none;border:0;border-top:1px solid rgba(255,255,255,.08);color:#b9a592;font:inherit;font-size:13px;cursor:pointer;text-align:right}
+.fold-btn:hover{color:#fff}
+
+/* حالت جمع‌شده */
+html.folded .side{width:var(--side-folded)}
+html.folded .lbl{display:none}
+html.folded .menu-top > a.top,html.folded .fold-btn{justify-content:center;padding-left:0;padding-right:0}
+html.folded .menu-top.current.has-sub > a.top::after{display:none}
+html.folded .menu-top.has-sub > .sub{display:none}
+html.folded .menu-top.has-sub:hover > .sub{display:block;position:absolute;right:100%;top:0;min-width:190px;border-radius:6px 0 0 6px;box-shadow:-6px 6px 18px rgba(0,0,0,.35);padding:0 0 6px}
+html.folded .menu-top.has-sub:hover > .sub .sub-title{display:block;padding:9px 14px;color:#fff;font-weight:700;font-size:14px;background:var(--side-bg)}
+html.folded .menu-top.has-sub:hover > .sub a{padding-right:14px}
+html.folded .menu-top:not(.has-sub):hover > a.top .lbl{display:block;position:absolute;right:100%;top:0;height:100%;display:flex;align-items:center;white-space:nowrap;padding:0 16px;background:var(--side-bg);color:#fff;border-radius:6px 0 0 6px;box-shadow:-6px 6px 18px rgba(0,0,0,.35)}
+html.folded .fold-btn .ico{transform:rotate(180deg)}
+
+.main{flex:1;padding:28px 34px;min-width:0}
+.page-title{margin:0 0 22px;font-size:26px;font-weight:800}
+
+.flash{padding:10px 14px;border-radius:8px;margin-bottom:14px;font-size:14px}
+.flash.ok{background:#e6f4ea;color:var(--ok)}
+.flash.err{background:#fce8e6;color:var(--err)}
+.flash.warn{background:#fff4d6;color:#8a6100}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:20px}
+.card h2{margin:0 0 14px;font-size:17px;font-weight:800}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:20px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.stat small{display:block;color:var(--muted);font-size:13px}
+.stat b{font-size:24px;font-weight:800}
+.stat span{font-size:13px;color:var(--muted);margin-inline-start:4px}
+
+table{width:100%;border-collapse:collapse;background:var(--card)}
+th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:13px;color:var(--muted);font-weight:600;background:#faf6ef}
+td.num,th.num{text-align:left;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+.table-wrap{border:1px solid var(--line);border-radius:12px;overflow:auto;background:var(--card);margin-bottom:20px}
+
+form.inline{display:inline}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+input[type=text],input[type=password],input[type=number],select,textarea{
+  width:100%;padding:9px 11px;border:1px solid #d3c7b6;border-radius:8px;background:#fff;color:var(--ink);font:inherit}
+input[type=text],input[type=password],input[type=number],select,textarea{line-height:1.4}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(138,75,42,.35);border-color:var(--accent)}
+.fields{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-bottom:14px}
+.fields .full{grid-column:1/-1}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink)}
+.check input{width:auto}
+
+.btn{display:inline-block;border:0;border-radius:8px;padding:9px 18px;background:var(--ink);color:#fff;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn:hover{opacity:.88}
+.btn.light{background:#efe6d8;color:var(--ink)}
+.btn.danger{background:var(--err)}
+.btn.sm{padding:4px 11px;font-size:13px}
+.actions{display:flex;gap:6px;flex-wrap:wrap}
+.badge{display:inline-block;padding:1px 10px;border-radius:999px;font-size:12px;background:#e6f4ea;color:var(--ok)}
+.badge.off{background:#eee;color:#777}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:16px}
+.filters .f{min-width:130px}
+.quick{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.quick a{padding:4px 12px;border-radius:999px;background:#efe6d8;color:var(--ink);text-decoration:none;font-size:13px}
+.quick a.on{background:var(--ink);color:#fff}
+
+.icon-pick{display:flex;gap:8px;flex-wrap:wrap}
+.icon-pick label{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 12px;border:1px solid #d3c7b6;border-radius:10px;cursor:pointer;color:var(--ink);font-size:12px;margin:0}
+.icon-pick input{display:none}
+.icon-pick input:checked + span{color:var(--accent);font-weight:700}
+.icon-pick label:has(input:checked){border-color:var(--accent);background:#faf1e6}
+.icon-pick span{display:flex;flex-direction:column;align-items:center}
+
+.bar{height:10px;background:#efe6d8;border-radius:6px;overflow:hidden;min-width:120px}
+.bar i{display:block;height:100%;background:var(--accent)}
+
+/* ثبت فروش */
+.pos{display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start}
+.pos-cat{margin-bottom:18px}
+.pos-cat h3{margin:0 0 8px;font-size:15px}
+.pos-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.pos-item{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.pos-item .n{display:flex;flex-direction:column;line-height:1.4}
+.pos-item .n small{color:var(--muted)}
+.qty-box{display:flex;align-items:center;gap:6px}
+.qty-box button{width:28px;height:28px;border:0;border-radius:50%;background:#efe6d8;font:inherit;font-size:17px;cursor:pointer;line-height:1}
+.qty-box .q{min-width:20px;text-align:center;font-weight:700}
+.pos-item.sel{border-color:var(--accent);background:#faf1e6}
+.cart{position:sticky;top:20px}
+.cart ul{list-style:none;margin:0 0 12px;padding:0;font-size:14px}
+.cart li{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.sum-row{display:flex;justify-content:space-between;padding:4px 0}
+.sum-row.total{font-size:19px;font-weight:800;border-top:2px solid var(--ink);margin-top:6px;padding-top:8px}
+
+.invoice{max-width:520px}
+.invoice .sum-row{font-size:15px}
+
+/* ورود */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login{width:100%;max-width:380px}
+.login .logo{display:flex;align-items:center;justify-content:center;gap:10px;font-weight:800;letter-spacing:.12em;font-size:22px;margin-bottom:18px}
+
+@media (max-width:900px){
+  .ab-toggle{display:flex}
+  .ab-item span{display:none}
+  .ab-item.ab-site span{display:inline}
+  .side,html.folded .side{position:fixed;top:var(--bar-h);right:0;bottom:0;height:auto;width:250px;transform:translateX(100%);transition:transform .2s;box-shadow:-8px 0 24px rgba(0,0,0,.35)}
+  body.menu-open .side{transform:none}
+  html.folded .lbl{display:inline}
+  html.folded .menu-top > a.top{justify-content:flex-start;padding:10px 14px}
+  html.folded .menu-top.current.has-sub > a.top::after{display:block}
+  .menu-top.has-sub > .sub,.menu-top.has-sub:not(.current) > .sub,html.folded .menu-top.has-sub > .sub,
+  .menu-top.has-sub:not(.current):hover > .sub,html.folded .menu-top.has-sub:hover > .sub{display:block;position:static;box-shadow:none;border-radius:0;min-width:0;padding:6px 0}
+  .menu-top.has-sub:not(.current):hover > .sub .sub-title,html.folded .menu-top.has-sub:hover > .sub .sub-title{display:none}
+  .menu-top.has-sub:not(.current):hover > .sub a,html.folded .menu-top.has-sub:hover > .sub a{padding-right:44px}
+  .fold-btn{display:none}
+  .layout{display:block}
+  .grid{grid-template-columns:1fr!important}
+  .grid > *{min-width:0}
+  .print-modal .btns{grid-template-columns:1fr}
+  .main{padding:20px 16px}
+  .pos{grid-template-columns:1fr}
+  .cart{position:static}
+}
+@media print{
+  .adminbar,.side,.no-print{display:none!important}
+  .layout{padding-top:0}
+  .main{padding:0}
+  body{background:#fff}
+}
+
+/* ---------- لیست‌های کشویی تاریخ شمسی ---------- */
+.jdate{display:inline-flex;gap:6px}
+.jdate select{width:auto;min-width:70px;padding:9px 10px}
+.jdate select[name$="_y"]{min-width:88px}
+.jdate select[name$="_m"]{min-width:104px}
+
+/* ---------- مودال ---------- */
+.modal-overlay{position:fixed;inset:0;background:rgba(30,15,8,.55);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;z-index:50}
+.modal-overlay[hidden]{display:none}
+.modal-box{position:relative;background:#fff;border-radius:14px;width:100%;max-width:560px;padding:22px 24px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.modal-x{position:absolute;top:8px;inset-inline-start:12px;border:0;background:none;font-size:28px;line-height:1;cursor:pointer;color:var(--muted)}
+.modal-box .card{border:0;padding:0;margin:0;max-width:none}
+.modal-box .actions{margin-top:16px}
+
+/* ---------- گزارش دوره‌ای و QR ---------- */
+.print-box{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.print-box .btns{display:flex;gap:8px;flex-wrap:wrap}
+.qr-card{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:24px;background:#fff;border:1px solid var(--line);border-radius:14px;max-width:340px}
+.qr-card canvas{width:260px;height:260px;image-rendering:pixelated}
+.qr-card .cap{font-weight:700;font-size:17px}
+.qr-card .url{font-size:12px;color:var(--muted);direction:ltr;word-break:break-all}
+
+@media print{
+  body.has-modal .layout{display:none!important}
+  body.has-modal .modal-overlay{position:static;background:none;padding:0;display:block}
+  body.has-modal .modal-box{box-shadow:none;max-width:none;padding:0}
+  body.has-modal .modal-x{display:none}
+  body.qr-print .adminbar,body.qr-print .side,body.qr-print .page-title,body.qr-print .flash,body.qr-print form.card{display:none!important}
+  body.qr-print .grid{display:block}
+  body.qr-print .qr-card{margin:20px auto;border:0;max-width:none}
+}
+
+/* ---------- نسیه، تسویه، هزینه‌ها ---------- */
+.badge.credit{background:#fff4d6;color:#8a6100}
+.badge.paid{background:#e6f4ea;color:var(--ok)}
+.stat.warn{border-color:#ecd28a;background:#fffaf0}
+.stat.bad b{color:var(--err)}
+.stat.good b{color:var(--ok)}
+.settle{margin-top:16px;padding:12px 14px;border:1px dashed #d9a441;border-radius:10px;background:#fffaf0}
+.settle label{color:#8a6100;font-weight:600;margin-bottom:6px}
+.settle small{display:block;margin-top:6px;color:var(--muted)}
+.sub-note{font-size:12px;color:var(--muted);display:block}
+.print-modal h2{margin:0 0 14px;font-size:18px}
+.print-modal .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.print-modal .btns .btn{text-align:center}
+#cust-wrap[hidden]{display:none}
+
+/* ---------- صفحه اطلاعات و امکانات کافه: کارت‌های متوازن ---------- */
+.settings-dashboard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
+.settings-card{margin:0;min-width:0;padding:22px;border-radius:16px;box-shadow:0 5px 18px rgba(59,29,18,.045)}
+.settings-card-main{grid-column:1/-1}
+.settings-card-head{display:flex;align-items:center;gap:13px;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.settings-card-head h2{margin:0 0 3px;font-size:17px}
+.settings-card-head p{margin:0;color:var(--muted);font-size:12px}
+.settings-icon{display:flex;align-items:center;justify-content:center;flex:0 0 46px;width:46px;height:46px;border-radius:14px;background:#f5e9dc;color:var(--accent);font-size:23px}
+.settings-card .fields{margin-bottom:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+.settings-card .fields .full{grid-column:1/-1}
+.settings-card input[type=file]{max-width:100%}
+.settings-save{grid-column:1/-1;display:flex;justify-content:flex-start;padding:2px 0 8px}
+.settings-save .btn{padding:11px 24px;box-shadow:0 4px 10px rgba(59,29,18,.12)}
+.settings-password{max-width:760px;margin-top:22px}
+@media(max-width:760px){.settings-dashboard{grid-template-columns:minmax(0,1fr)}.settings-card-main{grid-column:auto}.settings-card .fields{grid-template-columns:minmax(0,1fr)}.settings-save{grid-column:auto}.settings-card{padding:17px}}

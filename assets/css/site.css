@@ -1,0 +1,164 @@
+:root{
+  --paper:#f0e8dc;
+  --bg:#d8ccbb;
+  --ink:#3b1d12;
+  --muted:#7b6050;
+  --accent:#d9a441;
+}
+html[data-theme="dark"]{
+  --paper:#241913;
+  --bg:#120c09;
+  --ink:#f1e6d6;
+  --muted:#b9a592;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Vazirmatn',Tahoma,sans-serif;
+  line-height:1.7;
+}
+.ltr{direction:ltr;unicode-bidi:embed;display:inline-block}
+html[data-theme="dark"] .sheet{
+  background-image:
+    radial-gradient(rgba(255,235,210,.05) 1px,transparent 1px),
+    radial-gradient(rgba(255,235,210,.03) 1px,transparent 1px);
+  box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+.ico{flex:none}
+
+.sheet{
+  max-width:900px;
+  margin:28px auto;
+  padding:56px 60px 44px;
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(rgba(90,55,25,.06) 1px,transparent 1px),
+    radial-gradient(rgba(90,55,25,.04) 1px,transparent 1px);
+  background-size:7px 7px,13px 13px;
+  background-position:0 0,3px 5px;
+  transition:background-color .25s,color .25s;
+  box-shadow:0 10px 40px rgba(59,29,18,.18);
+}
+
+/* ---------- نوار ابزار ---------- */
+.toolbar{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin:-20px 0 26px}
+.tb-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;padding:0;
+  background:transparent;color:var(--ink);
+  border:1.5px solid var(--ink);border-radius:50%;
+  cursor:pointer;transition:background .2s,color .2s;
+}
+.tb-btn:hover,.tb-btn:focus-visible{background:var(--ink);color:var(--paper);outline:none}
+.i-moon{display:inline-flex}
+.i-sun{display:none}
+html[data-theme="dark"] .i-sun{display:inline-flex}
+html[data-theme="dark"] .i-moon{display:none}
+.modal .tb-btn{width:auto;height:auto;border-radius:999px;padding:6px 16px;font:inherit;font-size:14px}
+
+.modal{position:fixed;inset:0;background:rgba(10,5,2,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.modal[hidden]{display:none}
+.modal-box{
+  position:relative;background:var(--paper);color:var(--ink);
+  border-radius:18px;padding:30px 28px 24px;max-width:340px;width:100%;
+  display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+.modal-x{position:absolute;top:8px;inset-inline-start:12px;border:0;background:none;color:var(--muted);font-size:28px;line-height:1;cursor:pointer}
+.m-title{font-size:18px;letter-spacing:.1em}
+.m-cap{margin:0;font-size:14px;color:var(--muted)}
+#qr-canvas{width:240px;height:240px;border-radius:10px;background:#fff;image-rendering:pixelated}
+.toast{
+  position:fixed;bottom:26px;left:50%;transform:translateX(-50%);
+  background:var(--ink);color:var(--paper);padding:8px 20px;border-radius:999px;
+  font-size:14px;z-index:60;max-width:90vw;
+}
+.toast[hidden]{display:none}
+
+/* ---------- سربرگ ---------- */
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:28px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-ico{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border:1.5px solid var(--ink);border-radius:50%}
+.brand-name{font-weight:800;font-size:22px;letter-spacing:.14em}
+.script{margin:34px 0 0;font-size:34px;font-weight:300;line-height:1.2}
+.title h1{margin:0;font-size:118px;line-height:1.05;font-weight:900;letter-spacing:-.01em}
+.today{margin:10px 0 0;font-size:14px;color:var(--muted)}
+
+.arch{
+  flex:none;width:210px;height:260px;
+  border-radius:105px 105px 0 0;
+  overflow:hidden;
+  background:#e2c7a0;
+}
+.arch img{width:100%;height:100%;object-fit:cover;display:block}
+.arch-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(59,29,18,.55);
+  background:linear-gradient(160deg,#ecd4ae,#c99a5b)}
+
+.note{margin:30px 0 0;font-size:13px;color:var(--muted)}
+
+/* ---------- منو ---------- */
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:40px 56px;margin-top:34px}
+.cat h2{
+  display:flex;align-items:center;gap:12px;
+  margin:0 0 14px;padding-bottom:8px;
+  font-size:27px;font-weight:800;
+  border-bottom:2px solid var(--ink);
+}
+.cat ul{list-style:none;margin:0;padding:0}
+.cat.wide{grid-column:1/-1}
+.cat.wide ul{column-count:2;column-gap:56px}
+.cat li{break-inside:avoid;padding:3px 0}
+.row{display:flex;align-items:baseline;gap:6px;font-size:17px}
+.dots{flex:1;border-bottom:1px dotted var(--muted);opacity:.75;transform:translateY(-4px);min-width:12px}
+.price{font-weight:600}
+.desc{font-size:13px;color:var(--muted);margin-top:-2px}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0}
+
+/* ---------- تماس ---------- */
+.contact{
+  margin-top:52px;padding-top:26px;
+  border-top:2px solid var(--ink);
+  display:grid;grid-template-columns:1fr 1fr;gap:22px 40px;
+}
+.ci{display:flex;align-items:flex-start;gap:12px;color:inherit;text-decoration:none;text-align:right}
+.ci > .ico{margin-top:4px;color:var(--ink)}
+a.ci:hover .ci-t strong{text-decoration:underline}
+.ci-t{display:flex;flex-direction:column;font-size:14px;line-height:1.8;min-width:0}
+.ci-t strong{font-size:15.5px;font-weight:800}
+.ci-t span,.ci-t a{color:var(--muted);text-decoration:none}
+.ci-t a:hover{color:var(--ink)}
+.ci-t .ltr{display:block;text-align:right;direction:ltr}
+.ci-t a.ltr,.ci-t span.ltr{unicode-bidi:plaintext}
+
+.features{
+  list-style:none;margin:30px 0 0;padding:0;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+}
+.features li{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 14px;font-size:13.5px;
+  border:1px solid var(--muted);border-radius:999px;
+}
+
+/* ---------- واکنش‌گرا ---------- */
+@media (max-width:720px){
+  .sheet{margin:0;padding:34px 22px 30px}
+  .top{flex-direction:column-reverse;align-items:stretch}
+  .arch{width:170px;height:210px;align-self:center;border-radius:85px 85px 0 0}
+  .title h1{font-size:76px}
+  .script{font-size:26px;margin-top:22px}
+  .menu{grid-template-columns:1fr;gap:32px}
+  .cat.wide ul{column-count:1}
+  .toolbar{margin-top:0}
+}
+@media (max-width:520px){
+  .contact{grid-template-columns:1fr}
+}
+@media print{
+  .toolbar,.toast,.modal{display:none!important}
+  body{background:#fff}
+  .sheet{margin:0;box-shadow:none;max-width:none}
+}
