@@ -3,7 +3,7 @@
 ## نیازمندی‌ها
 - PHP 7.4 یا بالاتر با افزونه‌های `pdo_sqlite` و `gd` (اختیاری)
 - وب‌سرور Apache/Nginx یا اجرای محلی با `php -S localhost:8000`
-div>
+</div>
 ## نصب
 1. پوشه‌ی `cafe` را روی هاست یا سرور قرار دهید (پوشه‌های `data/` و `uploads/` باید قابل نوشتن باشند).
 2. صفحه‌ی اصلی: `/index.php`
@@ -35,7 +35,11 @@ div>
 - قیمت‌ها و مبالغ به عدد صحیح ذخیره می‌شوند و بدون واحد پول نمایش داده می‌شوند.
 - دیتابیس‌های نسخه‌های قبلی خودکار به ساختار جدید (نسیه و هزینه‌ها) ارتقا می‌یابند.
 
-  <p align="center">
+
+
+
+
+<p align="center">
   <img src="https://github.com/javad5087/cafe/blob/main/menu-site.png" alt="تصویر کافه" width="600">
   <img src="https://github.com/javad5087/cafe/blob/main/admin.png" alt="تصویر کافه" width="600">
 </p>
